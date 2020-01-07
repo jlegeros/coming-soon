@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Countdown from './Countdown';
+
 import '../styles/ComingSoon.css';
 
-function ComingSoon() {
-  return (
-    <div className="background">
-      <h1>Coming Soon</h1>
-    </div>
-  );
+class ComingSoon extends Component {
+  state = {
+    countdown: {
+      futureDate: "2020-12-31 00:00:00"
+    }
+  }
+
+  render() {
+    const {
+      countdown
+    } = this.state;
+    return (
+      <div className="background">
+        <Countdown futureDate={countdown.futureDate}/>
+      </div>
+    )};
 }
 
 export default ComingSoon;
