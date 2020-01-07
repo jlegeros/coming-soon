@@ -21,7 +21,7 @@ class ComingSoon extends Component {
       text: 'Coming soon!'
     },
     description: {
-      text: "Some description text that I don't want to copy at this time, will update later, bye Felicia!"
+      text: "Some description text that I don't want to copy at this time, will update later, bye Felicia!  It ain't no lie, baby -- bye bye bye!!"
     }
   }
 
