@@ -1,4 +1,5 @@
 .description {
+  overflow: hidden;
   grid-area: description;
   display: grid;
   font-size: 16px;

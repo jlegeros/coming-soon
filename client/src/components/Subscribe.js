@@ -17,8 +17,26 @@ class Subscribe extends Component {
     if (this.state.email) {
       fetch(`/api/memberAdd?email=${this.state.email}`)
       .then(res => res.json())
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+      .then(json => {
+        if (json.status === "subscribed") {
+          console.log("subscribed");
+          this.props.configureNotification("success");
+        } else if (json.title === "Member Exists") {
+          console.log("member exists");
+          this.props.configureNotification("warning");
+        } else {
+          console.log("Danger Will Robinson!!");
+          this.props.configureNotification("danger");
+        }
+        this.props.showNotification();
+      })
+      .catch(err => {
+        console.log(err)
+      });
+
+      this.props.changeLogoSpeed();
+
+      this.setState({ email: "" });
     }
   }
 
