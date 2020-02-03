@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 
 import "../styles/Subscribe.css";
 
@@ -19,13 +20,10 @@ class Subscribe extends Component {
       .then(res => res.json())
       .then(json => {
         if (json.status === "subscribed") {
-          console.log("subscribed");
           this.props.configureNotification("success");
         } else if (json.title === "Member Exists") {
-          console.log("member exists");
           this.props.configureNotification("warning");
         } else {
-          console.log("Danger Will Robinson!!");
           this.props.configureNotification("danger");
         }
         this.props.showNotification();
@@ -54,6 +52,14 @@ class Subscribe extends Component {
       </form>
     )
   }
+}
+
+Subscribe.propTypes = {
+  placeholder: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
+  configureNotification: PropTypes.func.isRequired,
+  changeLogoSpeed: PropTypes.func.isRequired,
+  showNotification: PropTypes.func.isRequired
 }
 
 export default Subscribe;

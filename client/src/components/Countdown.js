@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment, { duration } from 'moment';
+import PropTypes from 'prop-types';
 
 import '../styles/Countdown.css';
 
@@ -54,7 +55,7 @@ class Countdown extends Component {
     return (
       <div className='countdown'>
         {Object.keys(this.state).map((key, i) => (
-          <div className='countdown-segment'>
+          <div key={i} className='countdown-segment'>
             <span className='countdown-segment-number'>
               {this.addZeros(this.state[key])}
             </span>
@@ -67,6 +68,10 @@ class Countdown extends Component {
       </div>
     )
   }
+}
+
+Countdown.propTypes = {
+  futureDate: PropTypes.string.isRequired
 }
 
 export default Countdown;

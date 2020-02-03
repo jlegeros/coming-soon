@@ -1,9 +1,10 @@
 import React from 'react';
 import Notification from './Notification';
+import PropTypes from 'prop-types';
 
 import "../styles/Description.css";
 
-export const Description = ({ text, src, alt, message, visible, level }) => {
+const Description = ({ text, src, alt, message, visible, level }) => {
   return (
     <div className="description">
       <p className="description-text">{text}</p>
@@ -11,3 +12,14 @@ export const Description = ({ text, src, alt, message, visible, level }) => {
     </div>
   )
 }
+
+Description.propTypes = {
+  text: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  visible: PropTypes.bool.isRequired,
+  level: PropTypes.string.isRequired
+}
+
+export default Description;

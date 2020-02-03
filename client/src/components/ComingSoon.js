@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import Countdown from './Countdown';
-import { Logo } from './Logo';
-import { Title } from './Title';
-import { Description } from './Description';
+import Logo from './Logo';
+import Title from './Title';
+import Description from './Description';
 import Subscribe from './Subscribe';
+import Links from './Links';
 
 import logo from "../images/gear.svg";
 import check from "../images/check.svg";
 import xmark from "../images/xmark.svg";
 import exclamation from "../images/exclamation.svg";
+import facebook from "../images/fbookicon.svg";
+import instagram from "../images/instaicon.svg";
+import twitter from "../images/twittericon.svg";
+import youtube from "../images/youtubeicon.svg";
 
 import '../styles/ComingSoon.css';
 
@@ -38,7 +43,29 @@ class ComingSoon extends Component {
       message: "",
       level: "",
       visible: false
-    }
+    },
+    links: [
+      {
+        url: "https://www.facebook.com",
+        logo: facebook,
+        text: "Facebook"
+      },
+      {
+        url: "https://www.instagram.com",
+        logo: instagram,
+        text: "Instagram"
+      },
+      {
+        url: "https://twitter.com",
+        logo: twitter,
+        text: "Twitter"
+      },
+      {
+        url: "https://youtube.com",
+        logo: youtube,
+        text: "YouTube"
+      }
+    ]
   }
 
   configureNotification = level => {
@@ -66,7 +93,6 @@ class ComingSoon extends Component {
     notification.visible = true;
     this.setState({ notification }, () => {
       setTimeout(() => {
-        console.log("setting visible back to false...");
         notification.visible = false;
         this.setState({ notification });
       }, 3000);
@@ -86,7 +112,7 @@ class ComingSoon extends Component {
 
   render() {
     const {
-      countdown, logo, title, description, subscribe, notification
+      countdown, logo, title, description, subscribe, notification, links
     } = this.state;
     return (
       <div className="background">
@@ -95,6 +121,7 @@ class ComingSoon extends Component {
         <Title text={ title.text } />
         <Description text={ description.text } src={ notification.src } alt={ notification.alt } message={ notification.message } level={ notification.level } visible={ notification.visible } />
         <Subscribe placeholder={ subscribe.placeholder } buttonText={ subscribe.buttonText } showNotification={ this.showNotification } configureNotification={ this.configureNotification } changeLogoSpeed={ this.changeLogoSpeed } />
+        <Links links={ links } />
       </div>
     )};
 }
